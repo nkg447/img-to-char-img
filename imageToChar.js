@@ -10,7 +10,7 @@ function setURL(url) {
 
 function go() {
   skip = Math.max(2, +document.getElementById("ratio").value);
-  var url = document.getElementById("url").value;
+  var url = "https://cors-anywhere.herokuapp.com/" + document.getElementById("url").value;
   setURL(url);
 }
 
