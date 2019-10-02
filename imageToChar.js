@@ -1,5 +1,5 @@
 image = new MarvinImage();
-var skip = 2;
+// var skip = 2;
 function setURL(url) {
   image.load(
     url,
@@ -9,8 +9,12 @@ function setURL(url) {
 }
 
 function go() {
-  skip = Math.max(2, +document.getElementById("ratio").value);
-  var url = "https://cors-anywhere.herokuapp.com/" + document.getElementById("url").value;
+  let lineHeight = +document.getElementById("ratio").value;
+  if (lineHeight === 0) lineHeight = 1.5;
+  document.getElementsByTagName("pre")[0].style["line-height"] = lineHeight;
+  var url =
+    "https://cors-anywhere.herokuapp.com/" +
+    document.getElementById("url").value;
   setURL(url);
 }
 
@@ -25,6 +29,9 @@ function getChar(rgb) {
 function imageLoaded() {
   var r, b, g, tavg;
   var charImage = "";
+  var skip = Math.ceil(image.getWidth()*2 / 900);
+  // console.log(skip, image.getWidth());
+
   for (var i = 0; i < image.getHeight(); i += skip) {
     for (var j = 0; j < image.getWidth(); j += skip) {
       r = image.getIntComponent0(j, i);
