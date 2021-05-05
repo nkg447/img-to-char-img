@@ -12,9 +12,7 @@ function go() {
   let lineHeight = +document.getElementById("ratio").value;
   if (lineHeight === 0) lineHeight = 1.5;
   document.getElementsByTagName("pre")[0].style["line-height"] = lineHeight;
-  var url =
-    "https://cors-anywhere.herokuapp.com/" +
-    document.getElementById("url").value;
+  var url = document.getElementById("url").value;
   setURL(url);
 }
 
